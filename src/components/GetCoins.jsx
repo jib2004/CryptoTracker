@@ -53,7 +53,7 @@ const GetCoins = () => {
                     <tr key={coin.id} className='cursor-pointer' onClick={()=>{handleGetChart(coin.id)}}>
                     <td className='px-4 py-2 text-[10px] md:text-[14px]'>#{index+1}</td>
                     <td className='flex items-center gap-3 font-medium text-[10px] md:text-[14px] px-4 py-2 xl:w-[250px]'><img src={coin.image} alt={`Image of ${coin.name}`} className='size-[32px] object-contain' /> <span>{coin.name}</span></td>
-                    <td className=' px-4 py-2 text-[10px] md:text-[14px]'>{coin.last_updated}</td>
+                    <td className=' px-4 py-2 text-[10px] md:text-[14px]'>{coin.last_updated.slice(0,-5).slice(11,19)}</td>
                     <td className={` px-4 py-2 text-[10px] md:text-[14px]${coin.price_change_percentage_24h > 0 ? ' text-green-500':' text-red-500' }`}>{coin.price_change_percentage_24h> 0 && '+'}{coin.price_change_percentage_24h}%</td>
                     <td className=' px-4 py-2 text-[10px] md:text-[14px]'>&#36;{coin.current_price.toLocaleString()}</td>
                     <td className=' px-4 py-2 text-[10px] md:text-[14px]'>&#36;{coin.total_volume.toLocaleString()}</td>
