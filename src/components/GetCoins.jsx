@@ -1,10 +1,13 @@
 import { useEffect,useState } from 'react'
 import { fetchCoins } from '../components/FetchCoins'
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 const GetCoins = () => {
     const [coins, setCoins] = useState([])
     const [loading,setLoading] = useState(false)
     const [input,setInput] =  useState('')
+    const {theme} = useSelector(state=>state.theme)
     const navigate = useNavigate()
     useEffect(() => {
         const fetchData = async () => {
@@ -32,9 +35,9 @@ const GetCoins = () => {
 
         {loading && "Loading..."}
         <div className={`my-4 ${loading ? 'hidden':'block'}`}>
-            <input type="text" value={input} onChange={(e)=>setInput(e.target.value)} className='border w-full md:w-1/2 px-4 py-2 rounded-3xl outline-none' placeholder='Search....' />
+            <input type="text" value={input} onChange={(e)=>setInput(e.target.value)} className='border w-full md:w-1/2 px-4 py-2 rounded-3xl outline-none text-black' placeholder='Search....' />
         </div>
-        <table  className={`text-[#352E5B] ${loading ? 'hidden':'block'}`}>
+        <table  className={`text-[#352E5B] ${loading ? 'hidden':'block'} ${theme && 'text-white'}`}>
             <tr>
                 <th>Rank</th>
                 <th>Cryptocoin</th>

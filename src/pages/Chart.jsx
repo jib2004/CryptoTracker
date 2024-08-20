@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import {Chart}  from 'react-google-charts'
+import { useSelector } from 'react-redux';
+
 
 const Charts = () => {
   let {id,day } = useParams()
   const [loading,setLoading] = useState(false)
   const [data,setData] = useState([[]])
-  
+  const {theme} = useSelector(state=>state.theme)
 
 const options = {
   method: 'GET',
@@ -40,23 +42,26 @@ let chartData = [['Dates',"Prices"]]
 
 console.log(chartData)
 useEffect(()=>{
-  fetchChatData()
-
-  
+  fetchChatData()  
 },[])
-
-// console.log(dataValue)
-
   
   return (
     <App>
       {loading && "Loading..."}
-      <div className={`my-4 w-screen h-screen xl:h-auto ${loading ? 'hidden':'block'}`}>
+      <div className={`  w-screen h-screen xl:h-auto ${loading ? 'hidden':'block'} `}>
         <Chart
         chartType='LineChart'
         data={chartData}
         height={'100%'}
         width="100%"
+        options={{
+         backgroundColor:`${theme && '#0D0B1C'}`,
+         colors: [`${theme ? 'white':'blue'}`],
+         title: 'Price Chart',
+         legend:'red',
+        
+        }}
+        
         legendToggle
         />
       </div>
