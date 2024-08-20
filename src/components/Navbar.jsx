@@ -14,7 +14,7 @@ const Navbar = ({menu,setMenu}) => {
     
 
   return (
-    <div className={`w-screen absolute z-10 xl:w-[269px] xl:static h-screen bg-[#f2f2f2] flex flex-col items-center justify-between py-6 shadow-sm duration-300 xl:translate-x-0 ${menu ? ' translate-x-0': ' -translate-x-[1000px]'} ${theme && 'bg-[#0D0B1C] text-white'}`}> 
+    <div className={`w-screen absolute z-10 xl:w-[269px] xl:static h-screen bg-[#f2f2f2] flex flex-col items-center justify-between py-6 shadow-sm duration-300 xl:translate-x-0 ${menu ? ' translate-x-0': ' -translate-x-[1000px]'} ${theme && '!bg-[#0D0B1C] text-white'}`}> 
     <div className='flex flex-col gap-8 w-full xl:items-center '>
     <div className=' flex justify-end px-2 xl:hidden'><MdClose className='size-[24px]' onClick={setMenu}/></div>
         <div>
